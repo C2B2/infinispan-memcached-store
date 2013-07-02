@@ -17,11 +17,11 @@
 * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 */
-package org.infinispan.loaders.memcached.configuration;
+package uk.co.c2b2.infinispan.loader.memcached.configuration;
 
 import org.infinispan.configuration.BuiltBy;
 import org.infinispan.configuration.cache.*;
-import org.infinispan.loaders.memcached.MemcachedCacheStoreConfig;
+import uk.co.c2b2.infinispan.loader.memcached.MemcachedCacheStoreConfig;
 import org.infinispan.util.TypedProperties;
 
 @BuiltBy(MemcachedStoreConfigurationBuilder.class)

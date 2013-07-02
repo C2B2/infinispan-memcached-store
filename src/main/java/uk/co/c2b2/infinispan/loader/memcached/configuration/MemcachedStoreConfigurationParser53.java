@@ -17,10 +17,12 @@
 * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 */
-package org.infinispan.loaders.memcached.configuration;
+package uk.co.c2b2.infinispan.loader.memcached.configuration;
 
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.configuration.parsing.*;
+import org.infinispan.configuration.parsing.Attribute;
+import org.infinispan.configuration.parsing.Element;
 import org.infinispan.util.StringPropertyReplacer;
 
 import javax.xml.stream.XMLStreamException;
@@ -37,7 +39,7 @@ public class MemcachedStoreConfigurationParser53 implements ConfigurationParser 
     @Override
     public void readElement(XMLExtendedStreamReader reader, ConfigurationBuilderHolder holder) throws XMLStreamException {
         ConfigurationBuilder builder = holder.getCurrentConfigurationBuilder();
-        Element element = Element.forName(reader.getLocalName());
+        uk.co.c2b2.infinispan.loader.memcached.configuration.Element element = uk.co.c2b2.infinispan.loader.memcached.configuration.Element.forName(reader.getLocalName());
         switch (element) {
             case MEMCACHED_STORE: {
                 parseMemcachedCacheStore(reader, builder.loaders().addLoader(MemcachedStoreConfigurationBuilder.class));
@@ -54,7 +56,7 @@ public class MemcachedStoreConfigurationParser53 implements ConfigurationParser 
             ParseUtils.requireNoNamespaceAttribute(reader, i);
             String value = StringPropertyReplacer.replaceProperties(reader
                     .getAttributeValue(i));
-            Attribute attribute = Attribute.forName(reader
+            uk.co.c2b2.infinispan.loader.memcached.configuration.Attribute attribute = uk.co.c2b2.infinispan.loader.memcached.configuration.Attribute.forName(reader
                     .getAttributeLocalName(i));
 
             switch (attribute) {

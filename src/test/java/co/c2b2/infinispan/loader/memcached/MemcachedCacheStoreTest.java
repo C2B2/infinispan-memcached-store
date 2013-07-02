@@ -17,14 +17,15 @@
 * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 */
-package org.infinispan.loaders.memcached;
+package co.c2b2.infinispan.loader.memcached;
 
 import org.infinispan.loaders.BaseCacheStoreTest;
 import org.infinispan.loaders.CacheLoaderException;
 import org.infinispan.loaders.CacheStore;
 import org.infinispan.loaders.keymappers.UnsupportedKeyTypeException;
-import org.infinispan.loaders.memcached.configuration.MemcachedStoreConfiguration;
 import org.testng.annotations.Test;
+import uk.co.c2b2.infinispan.loader.memcached.MemcachedCacheStore;
+import uk.co.c2b2.infinispan.loader.memcached.MemcachedCacheStoreConfig;
 
 @Test(groups = "unit", testName = "loaders.memcached.MemcachedCacheStoreTest")
 public class MemcachedCacheStoreTest extends BaseCacheStoreTest {

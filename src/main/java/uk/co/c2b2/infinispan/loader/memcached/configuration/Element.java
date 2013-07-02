@@ -17,35 +17,43 @@
 * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 */
-package org.infinispan.loaders.memcached;
+package uk.co.c2b2.infinispan.loader.memcached.configuration;
 
-import org.infinispan.loaders.AbstractCacheStoreConfig;
+import java.util.HashMap;
+import java.util.Map;
 
-public class MemcachedCacheStoreConfig extends AbstractCacheStoreConfig {
+public enum  Element {
 
-    public static final String DEFAULT_HOSTNAME = "localhost";
-    public static final int DEFAULT_PORT = 11211;
+    // must be first
+    UNKNOWN(null),
 
-    private String hostname = DEFAULT_HOSTNAME;
-    private int port = DEFAULT_PORT;
+    MEMCACHED_STORE("memcachedStore");
 
-    public MemcachedCacheStoreConfig() {
-        setCacheLoaderClassName(MemcachedCacheStore.class.getName());
+    private final String name;
+
+    private Element(final String name) {
+        this.name = name;
     }
 
-    public String getHostname() {
-        return hostname;
+    public String getLocalName() {
+        return name;
     }
 
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
+    private static final Map<String, Element> MAP;
+
+    static {
+        final Map<String, Element> map = new HashMap<String, Element>(8);
+        for (Element element : values()) {
+            final String name = element.getLocalName();
+            if (name != null) {
+                map.put(name, element);
+            }
+        }
+        MAP = map;
     }
 
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
+    public static Element forName(final String localName) {
+        final Element element = MAP.get(localName);
+        return element == null ? UNKNOWN : element;
     }
 }
